@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { UserType } from "../../Types/UserType";
 
+import Button from "../Ui/Button";
+
 import classes from "./UserForm.module.css";
 
 // import UserModal from "./UserModal";
@@ -78,6 +80,8 @@ function UserForm(props: UserFormProps){
         }
     }
 
+    // <button type="submit">Add User</button>
+
     return (
         <form className={classes.input} onSubmit={(event) => {
             event.preventDefault();
@@ -96,7 +100,7 @@ function UserForm(props: UserFormProps){
                     ageChangeHandler(event.target.value);
                 }}/>
             </div>
-            <button type="submit">Add User</button>
+            <Button type="submit">Add User</Button>
         </form>
     );
 }
