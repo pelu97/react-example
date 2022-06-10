@@ -1,6 +1,19 @@
-# Getting Started with Create React App
+# React Example App using Typescript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple application developed using react with Typescript, supporting CSS Modules.
+
+The application consists of a single page where it's possible to add a user using a form, inputting username and age of the user. After saving, it's possible to see the list of users added. The data does not persist, it is saved only in memory and is not sent to the back-end.
+
+## Creating a Typescript React project
+
+The project was created with create-react-app using the Typescript template, using the command:
+
+### create-react-app my-app --template typescript
+
+To use CSS Modules without causing issues with the Typescript analyser, a "global.d.ts" (name can be different) file must be created inside the "src" directory of the project. Inside the file, add the following:
+
+### declare module '*.module.css';
+
 
 ## Available Scripts
 
