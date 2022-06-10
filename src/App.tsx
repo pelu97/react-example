@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import { UserType } from "./Types/UserType";
+
+import UserList from "./components/User/UserList";
+import NewUser from "./components/User/NewUser";
+
+const DUMMY_DATA: UserType[] = [
+    {
+        id: "testId",
+        username: "Test user",
+        age: 999
+    }
+]
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [userData, setUserData] = useState(DUMMY_DATA);
+
+
+
+    function addUser(user: UserType){
+        user.id = Math.random.toString();
+        
+        setUserData((prevData) => {
+            return (
+                [
+                    ...prevData,
+                    user
+                ]
+            );
+        });
+    }
+
+
+    return (
+        <div>
+        <NewUser onAddUser={addUser}/>
+        <UserList users={userData}/>
+        </div>
+    );
 }
 
 export default App;
