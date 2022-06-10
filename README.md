@@ -8,11 +8,11 @@ The application consists of a single page where it's possible to add a user usin
 
 The project was created with create-react-app using the Typescript template, using the command:
 
-### create-react-app my-app --template typescript
+### `create-react-app my-app --template typescript`
 
 To use CSS Modules without causing issues with the Typescript analyser, a "global.d.ts" (name can be different) file must be created inside the "src" directory of the project. Inside the file, add the following:
 
-### declare module '*.module.css';
+### `declare module '*.module.css';`
 
 
 ## Available Scripts
