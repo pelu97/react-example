@@ -11,7 +11,7 @@ import classes from "./UserForm.module.css";
 
 interface UserFormProps{
     onSubmitForm: (user: UserType) => void,
-    onInvalidForm: (message: string) => void
+    onInvalidForm: (title: string, message: string) => void
 }
 
 
@@ -21,6 +21,7 @@ function UserForm(props: UserFormProps){
 
     // const [validInput, setValidInput] = useState(true);
 
+    let invalidTitle: string;
     let invalidMessage: string;
     let validInput: boolean;
 
@@ -39,17 +40,19 @@ function UserForm(props: UserFormProps){
         console.log("Running validations");
         // console.log(user);
 
-        if(user.username.length <= 0){
+        if(user.username.trim().length <= 0){
             // setValidInput(false);
             // setModalMessage("Insert a valid username.");
             // setModalActive(true);
             validInput = false;
+            invalidTitle = "Invalid input";
             invalidMessage = "Insert a valid username.";
         }
         else if(user.age <= 0){
             // setValidInput(false);
             // setModalMessage("Insert a valid age.");
             // setModalActive(true);
+            invalidTitle = "Invalid input";
             validInput = false;
             invalidMessage = "Insert a valid age.";
         }
@@ -61,7 +64,7 @@ function UserForm(props: UserFormProps){
             setInputAge(0);
         }
         else{
-            props.onInvalidForm(invalidMessage);
+            props.onInvalidForm(invalidTitle, invalidMessage);
         }
 
 
@@ -72,7 +75,7 @@ function UserForm(props: UserFormProps){
     }
 
     function ageChangeHandler(value: string){
-        if(value.length > 0){
+        if(value.trim().length > 0){
             setInputAge(parseInt(value));
         }
         else{
