@@ -8,9 +8,9 @@ interface UserItemProps{
 
 function UserItem(props: UserItemProps){
     return (
-        <div>
+        <li>
             {`${props.user.username} (${props.user.age} years old)`}
-        </div>
+        </li>
     );
 }
 
