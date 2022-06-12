@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 
 import { UserType } from "./Types/UserType";
 
 import UserList from "./components/User/UserList";
 import NewUser from "./components/User/NewUser";
+
 
 const DUMMY_DATA: UserType[] = [
     {
@@ -20,7 +21,7 @@ function App() {
 
     function addUser(user: UserType){
         user.id = Math.random.toString();
-        
+
         setUserData((prevData) => {
             return (
                 [
@@ -33,10 +34,10 @@ function App() {
 
 
     return (
-        <div>
-        <NewUser onAddUser={addUser}/>
-        <UserList users={userData}/>
-        </div>
+        <Fragment>
+            <NewUser onAddUser={addUser}/>
+            <UserList users={userData}/>
+        </Fragment>
     );
 }
 
