@@ -5,7 +5,7 @@ import { UserType } from "../../Types/UserType";
 
 import UserForm from "../Form/UserForm";
 import Card from "../Ui/Card";
-import UserModal from "../Form/UserModal";
+import Modal from "../Ui/Modal";
 
 
 interface NewUserProps{
@@ -16,15 +16,17 @@ interface NewUserProps{
 function NewUser(props: NewUserProps){
     const [modalActive, setModalActive] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
+    const [modalTitle, setModalTitle] = useState("");
 
 
     function onAddUser(user: UserType){
         props.onAddUser(user);
     }
 
-    function onInvalidUser(message: string){
+    function onInvalidUser(title: string, message: string){
         console.log("Invalid user: " + message);
         setModalMessage(message);
+        setModalTitle(title);
         setModalActive(true);
     }
 
@@ -36,7 +38,7 @@ function NewUser(props: NewUserProps){
     return (
         <Card>
             <UserForm onSubmitForm={onAddUser} onInvalidForm={onInvalidUser}/>
-            {modalActive ? <UserModal message={modalMessage} onCancel={onCloseModal}/> : ""}
+            {modalActive ? <Modal title={modalTitle} message={modalMessage} onCancel={onCloseModal}/> : ""}
         </Card>
     );
 }
